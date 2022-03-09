@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Data records go here -->
+
+    <record id='library_book_categ_action' model='ir.actions.act_window'>
+
+        <field name="name">Library Books Categories</field>
+        <field name="res_model">library.book.category</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem name="My Library" id="library_base_menu" />
+    <menuitem name="Books Categories" id="library_book_categ_menu" parent="library_base_menu" action="library_book_categ_action"/>
+
+    <record id="library_book_categ_view_form" model="ir.ui.view">
+
+        <field name="name">Library Books Category Form</field>
+        <field name="model">library.book.category</field>
+        <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="parent_id" widget="many2many_tags"/>
+                            <field name="child_ids" widget="many2many_tags"/>
+                            <field name="parent_path"/>
+                        </group>
+
+                    </group>
+                    <button name="create_categories" string="Create Categories" />
+                </form>
+        </field>
+    </record>
+
+    <record id="library_book_categ_view_tree" model="ir.ui.view">
+
+        <field name="name">Library Book Categories List</field>
+        <field name="model">library.book.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="parent_id" widget="many2many_tags"/>
+                <field name="child_ids" widget="many2many_tags"/>
+                <field name="parent_path"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    <record id="library_book_categ_view_search" model="ir.ui.view">-->
+
+<!--        <field name="name">Library Book Search</field>-->
+<!--        <field name="model">library.book.category</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--                <search>-->
+<!--               <field name="name"/>-->
+<!--                <field name="parent_id" widget="many2many_tags"/>-->
+<!--                <field name="child_ids" widget="many2many_tags"/>-->
+<!--                <field name="parent_path"/>-->
+<!--                </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+
+</odoo>
